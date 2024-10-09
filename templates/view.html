@@ -1,0 +1,9 @@
+<h1>{{.Title}}</h1>
+
+{{ range .Menu }}
+<a href="/view/{{ . }}">{{ . }}</a>
+{{ end }}
+
+<p>[<a href="/edit/{{.Title}}">edit</a>]</p>
+
+<div>{{printf "%s" .Body}}</div>
