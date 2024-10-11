@@ -1,0 +1,76 @@
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Search bar styling */
+.search-bar {
+    width: 300px;
+    margin: 20px auto;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 8px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+/* Table styling */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Favorite button (Star) styling */
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc; /* Grey color for inactive */
+    transition: color 0.3s ease;
+}
+
+.star-btn:hover {
+    color: gold; /* Gold color when hovered */
+}
+
+.star-btn:active {
+    transform: scale(1.2); /* Slight scale effect when clicked */
+}
