@@ -1,76 +1,72 @@
-/* Body styling */
+/* General styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
 }
 
-h1 {
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
     color: #333;
 }
 
-/* Search bar styling */
-.search-bar {
-    width: 300px;
-    margin: 20px auto;
+.input-field {
+    margin-bottom: 15px;
 }
 
-.search-bar input {
-    width: 80%;
-    padding: 8px;
-    font-size: 16px;
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-.search-bar button {
-    padding: 8px;
-    font-size: 16px;
-    background-color: #333;
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-field button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.search-bar button:hover {
-    background-color: #555;
+.input-field button:hover {
+    background-color: #45a049;
 }
 
-/* Table styling */
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
+p {
+    text-align: center;
+    color: #555;
 }
 
-table th, table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+p a {
+    color: #4CAF50;
+    text-decoration: none;
 }
 
-table th {
-    background-color: #333;
-    color: white;
-}
-
-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Favorite button (Star) styling */
-.star-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #ccc; /* Grey color for inactive */
-    transition: color 0.3s ease;
-}
-
-.star-btn:hover {
-    color: gold; /* Gold color when hovered */
-}
-
-.star-btn:active {
-    transform: scale(1.2); /* Slight scale effect when clicked */
+p a:hover {
+    text-decoration: underline;
 }

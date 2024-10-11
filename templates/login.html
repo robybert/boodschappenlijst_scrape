@@ -1,0 +1,39 @@
+{{ template "header.html" }}
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" method="'post" action="#">
+        <div class="input-field">
+            <label for="email">Username</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="input-field">
+            <button type="button" id="submit_login">Login</button>
+        </div>
+    </form>
+    <p>Don't have an account? <a href="/register">Register here</a></p>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#submit_login').click(function(e){
+            e.preventDefault();
+            var formData = JSON.stringify({
+                "email"     : $('#email').val(),
+                "password"  : $('#password').val()
+            });
+            $.ajax({
+                type        : "POST",
+                url         : "../auth/login",
+                data        : formData,
+                dataType    : "json"
+            });            
+        });
+    });
+    </script>
+
+{{ template "footer.html" }}

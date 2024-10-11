@@ -17,5 +17,5 @@ func ViewProducts(c *gin.Context){
 }
 
 func ViewLogin(c *gin.Context) {
-	
+	c.HTML(http.StatusOK, "login.html", gin.H{})
 }

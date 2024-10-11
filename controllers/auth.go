@@ -4,6 +4,7 @@ import (
 	"boodschappenlijst/db"
 	"boodschappenlijst/models"
 	"fmt"
+	"net/http"
 	"time"
 
 	"boodschappenlijst/utils"
@@ -21,6 +22,7 @@ func Login(c *gin.Context) {
 
     if err := c.ShouldBindJSON(&user); err != nil {
         c.JSON(400, gin.H{"error": err.Error()})
+        c.Redirect(http.StatusBadRequest, "/view/login")
         return
     }
 
@@ -28,6 +30,7 @@ func Login(c *gin.Context) {
 
     if existingUser.ID == 0 {
         c.JSON(400, gin.H{"error": "user does not exist"})
+        c.Redirect(http.StatusBadRequest, "/view/login")
         return
     }
 
@@ -35,6 +38,7 @@ func Login(c *gin.Context) {
 
     if !errHash {
         c.JSON(400, gin.H{"error": "invalid password"})
+        c.Redirect(http.StatusBadRequest, "/view/login")
         return
     }
 
@@ -54,6 +58,7 @@ func Login(c *gin.Context) {
 
     if err != nil {
         c.JSON(500, gin.H{"error": "could not generate token"})
+        c.Redirect(http.StatusBadRequest, "/view/login")
         return
     }
 

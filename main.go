@@ -27,7 +27,11 @@ func main() {
 
 	routes.AuthRoutes(r)
 	routes.DBRoutes(r)
-	
+	routes.ViewRoutes(r)
+
+	r.Static("/static", "./templates/static")
+
+	r.LoadHTMLGlob("templates/*.html")
 
 	r.Run(":8080")
 }

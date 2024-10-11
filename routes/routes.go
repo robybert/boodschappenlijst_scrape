@@ -32,6 +32,7 @@ func ViewRoutes(r *gin.Engine) {
     viewRoutes := r.Group("/view")
     {
         viewRoutes.GET("/products", middlewares.IsAuthorized(), nil)
+        viewRoutes.GET("/login", controllers.ViewLogin)
     }
 
 }
