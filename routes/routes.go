@@ -2,21 +2,36 @@ package routes
 
 import (
 	"boodschappenlijst/controllers"
+	"boodschappenlijst/middlewares"
 
 	"github.com/gin-gonic/gin"
 )
 
 func AuthRoutes(r *gin.Engine) {
-    r.POST("/login", controllers.Login)
-    r.POST("/signup", controllers.Signup)
-    r.GET("/home", controllers.Home)
-    r.GET("/premium", controllers.Premium)
-    r.GET("/logout", controllers.Logout)
+    authRoutes := r.Group("/auth")
+    {
+        authRoutes.POST("/login", controllers.Login)
+        authRoutes.POST("/signup", controllers.Signup)
+        authRoutes.GET("/home", controllers.Home)
+        authRoutes.GET("/premium", controllers.Premium)
+        authRoutes.GET("/logout", controllers.Logout)
+    }
 }
 
 func DBRoutes(r *gin.Engine) {
-    r.POST("/products", controllers.SaveProduct)
-    r.GET("/products", controllers.GetProducts)
-    r.PUT("/products", controllers.UpdateProduct)
-    r.DELETE("/products", controllers.DeleteProduct)
+    dbRoutes := r.Group("/db")
+    {
+        dbRoutes.POST("/products", middlewares.IsAuthorized(), middlewares.IsAdmin(), controllers.SaveProduct)
+        dbRoutes.GET("/products", middlewares.IsAuthorized(), controllers.GetProducts)
+        dbRoutes.PUT("/products", middlewares.IsAuthorized(), middlewares.IsAdmin(), controllers.UpdateProduct)
+        dbRoutes.DELETE("/products", middlewares.IsAuthorized(), middlewares.IsAdmin(), controllers.DeleteProduct)
+    }
+}
+
+func ViewRoutes(r *gin.Engine) {
+    viewRoutes := r.Group("/view")
+    {
+        viewRoutes.GET("/products", middlewares.IsAuthorized(), nil)
+    }
+
 }

@@ -16,7 +16,7 @@ func GetProducts(c *gin.Context){
 		// return err
 	}
 
-	retProducts := db.Database.GetProducts(product)
+	retProducts := db.Database.GetProductsByName(product)
 	c.JSON(http.StatusOK, retProducts)
 }
 

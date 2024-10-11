@@ -10,7 +10,8 @@ import (
 )
 
 type DB interface {
-	GetProducts(product models.Product) []models.Product
+	GetAllProducts() []models.Product
+	GetProductsByName(product models.Product) []models.Product
 	SaveProduct(product models.Product) models.Product
 	UpdateProduct(product models.Product) models.Product
 	DeleteProduct(product models.Product) bool
@@ -46,7 +47,14 @@ func NewDatabase() DB {
 
 var Database DB = NewDatabase()
 
-func (db *database) GetProducts(product models.Product) []models.Product {
+func (db *database) GetAllProducts() []models.Product {
+	var products []models.Product
+	db.DB.Find(&products)
+
+	return products
+}
+
+func (db *database) GetProductsByName(product models.Product) []models.Product {
 	var retProds []models.Product
 
 	db.DB.Where("product_name = ?", product.ProductName).Find(&retProds)
